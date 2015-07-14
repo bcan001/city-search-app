@@ -1,0 +1,25 @@
+<div class='span3 well text-center'> 
+	<h2>Current Weather Forecast for <%= @weather['name'] %></h2>
+	</br>
+	</br><p>name: <%= @weather['name'] %></p>
+	</br><p>country: <%= @weather['country'] %></p>
+	
+	</br><p>forecast: <%= @weather['weather'][0]['main'] %></p>
+	</br><p>description: <%= @weather['weather'][0]['description'] %></p>
+
+	</br><p>temp: <%= @weather['main']['temp'] %></p>
+	</br><p>pressure: <%= @weather['main']['pressure'] %></p>
+	</br><p>humidity: <%= @weather['main']['humidity'] %></p>
+	</br><p>min temp: <%= @weather['main']['temp_min'] %></p>
+	</br><p>max temp: <%= @weather['main']['temp_max'] %></p>
+
+	</br><p>wind speed: <%= @weather['wind']['speed'] %></p>
+	</br><p>wind degrees: <%= @weather['wind']['deg'] %></p>
+</div>
+
+
+<div class='span3 well text-center'> 
+	<h2>Today's Events in <%= @weather['name'] %></h2>
+	
+
+</div>

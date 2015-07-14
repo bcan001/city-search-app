@@ -1,0 +1,7 @@
+<div style="text-align:center">
+	<%= form_for(@search, url: { action: 'show' }) do |f| %>
+		<p>City Name:</p>
+		<p><%= f.text_field :city_name %></p>
+		<p><%= f.submit 'search' %></p>
+	<% end %>
+</div>
