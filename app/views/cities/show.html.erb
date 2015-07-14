@@ -1,53 +1,65 @@
 <div class="container">
-<div class='well text-center'> 
 
-	<h2>Current Weather Forecast for <%= @weather['name'] %></h2>
-	</br>
-	</br><p>name: <%= @weather['name'] %></p>
-	</br><p>country: <%= @weather['country'] %></p>
-	
-	</br><p>forecast: <%= @weather['weather'][0]['main'] %></p>
-	</br><p>description: <%= @weather['weather'][0]['description'] %></p>
+	<div class='well text-center'> 
 
-	</br><p>temp: <%= @weather['main']['temp'] %></p>
-	</br><p>pressure: <%= @weather['main']['pressure'] %></p>
-	</br><p>humidity: <%= @weather['main']['humidity'] %></p>
-	</br><p>min temp: <%= @weather['main']['temp_min'] %></p>
-	</br><p>max temp: <%= @weather['main']['temp_max'] %></p>
-
-	</br><p>wind speed: <%= @weather['wind']['speed'] %></p>
-	</br><p>wind degrees: <%= @weather['wind']['deg'] %></p>
-
-
-  <% if current_user %>
+		<h2>Current Weather Forecast for <%= @weather['name'] %></h2>
 		</br>
-		<%= form_for(@fave_city, url: { action: 'save_city' }) do |f| %>
-			<%= f.hidden_field :fave_city, :value => @weather['name'] %>
+
+		<div class="row">
+        <div class="col-md-4">
+						<p><strong>City Name:</strong> <%= @weather['name'] %>, <%= @weather['country'] %></p>
+						<p><strong>Forecast:</strong> <%= @weather['weather'][0]['main'] %></p>
+						<p><strong>Description:</strong> <%= @weather['weather'][0]['description'] %></p>
+        </div>
+        <div class="col-md-4">
+						<p><strong>Current Temp:</strong> <%= kelvin_to_faren(@weather['main']['temp']) %> deg F</p>
+						<p><strong>Pressure:</strong> <%= @weather['main']['pressure'] %> hPa</p>
+						<p><strong>Humidity:</strong> <%= @weather['main']['humidity'] %> %</p>
+        </div>
+        <div class="col-md-4">
+						<p><strong>Min Temp:</strong> <%= kelvin_to_faren(@weather['main']['temp_min']) %> deg F</p>
+						<p><strong>Max Temp:</strong> <%= kelvin_to_faren(@weather['main']['temp_max']) %> deg F</p>
+
+						<p><strong>Wind Speed:</strong> <%= @weather['wind']['speed'] %> m/sec</p>
+						<p><strong>Wind Direction:</strong> <%= @weather['wind']['deg'] %> deg</p>
+				
+				</div>
+    </div>
+
+
+	  <% if current_user %>
 			</br>
-			<p><%= f.submit 'save city as favorite', class: "btn btn-primary" %></p>
+			<%= form_for(@fave_city, url: { action: 'save_city' }) do |f| %>
+				<%= f.hidden_field :fave_city, :value => @weather['name'] %>
+				</br>
+				<p><%= f.submit 'save city as favorite', class: "btn btn-primary" %></p>
+			<% end %>
 		<% end %>
-	<% end %>
+	</div>
+
+	<div class='well text-center'> 
+		<%= render 'cities/filter' %>
+	</div>
 
 
-</div>
+	<div class='well text-left'> 
 
+		<h2 style="text-align:center;">Today's Events in <%= @weather['name'] %></h2>
+		</br>
 
-<div class='well text-center'> 
+		</br>
+		<% @events['events']['event'].each do |e| %>
+			<h3><%= e['title'] %></h3>
 
-	<h2>Today's Events in <%= @weather['name'] %></h2>
-	</br>
+			<p><%= e['start_time'] %> to <%= e['stop_time'] %></p>
+		
+			<p><strong><%= e['venue_name'] %></strong></p>
+			<p><strong><%= e['venue_address'] %></strong></p>
+			<p><strong><%= e['city_name'] %>, <%= e['region_abbr'] %></strong></p>
 
-	</br>
-	<% @events['events']['event'].each do |e| %>
-		<h3><%= e['title'] %></h3>
+			<p><%= e['description'].html_safe %></p>
+			</br>
+		<% end %>
 
-		<p><%= e['start_time'] %> to <%= e['stop_time'] %></p>
-	
-		<p><%= e['description'] %></p>
-		<p><%= e['venue_name'] %></p>
-		<p><%= e['venue_address'] %></p>
-		<p><%= e['city_name'] %>, <%= e['region_abbr'] %></p>
-	<% end %>
-</div>
-
+	</div>
 </div>

@@ -8,9 +8,9 @@
  
         <% if current_user %>
           <li><p style="color:black;">Signed in as <strong><%= current_user.name %></strong></p></li>
-          <li><%= link_to 'my profile', profile_path, style: "color:white;" %></li>
           <li><%= link_to 'home', root_path, style: "color:white;" %></li>
           <li><%= link_to 'about', about_path, style: "color:white;" %></li>
+          <li><%= link_to 'my profile', profile_path, style: "color:white;" %></li>
           <li><%= link_to "Sign out", signout_path, id: "sign_out", style: "color:white;" %></li>
         <% else %>
           <li><%= link_to 'home', root_path, style: "color:white;" %></li>

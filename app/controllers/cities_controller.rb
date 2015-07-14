@@ -12,8 +12,16 @@ class CitiesController < ApplicationController
 			@city = params[:format]
 		end
 
+		if params[:search_text]
+			@search_text = params[:search_text]
+		else
+			@search_text = ''
+		end
+
 		@weather = get_weather(@city)
-		@events = get_events(@city)
+
+		@events = get_events(@city, @search_text)
+
 		@fave_city = ''
 	end
 	def about
