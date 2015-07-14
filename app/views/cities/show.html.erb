@@ -1,4 +1,6 @@
-<div class='span3 well text-center'> 
+<div class="container">
+<div class='well text-center'> 
+
 	<h2>Current Weather Forecast for <%= @weather['name'] %></h2>
 	</br>
 	</br><p>name: <%= @weather['name'] %></p>
@@ -18,10 +20,22 @@
 </div>
 
 
-<div class='span3 well text-center'> 
+<div class='well text-center'> 
+
 	<h2>Today's Events in <%= @weather['name'] %></h2>
 	</br>
-	</br><%= @events %>
 
+	</br>
+	<% @events['events']['event'].each do |e| %>
+		<h3><%= e['title'] %></h3>
+
+		<p><%= e['start_time'] %> to <%= e['stop_time'] %></p>
+	
+		<p><%= e['description'] %></p>
+		<p><%= e['venue_name'] %></p>
+		<p><%= e['venue_address'] %></p>
+		<p><%= e['city_name'] %>, <%= e['region_abbr'] %></p>
+	<% end %>
+</div>
 
 </div>

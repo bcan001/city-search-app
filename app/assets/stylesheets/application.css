@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+
+body {
+  background-image: url("/assets/city.jpg");
+  background-repeat: repeat-x;
+  background-repeat: repeat-y;
+}
+
+.brand {
+	color:black;
+	font-size: 30px;
+	font-style: italic;
+}

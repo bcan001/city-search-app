@@ -1,7 +1,10 @@
-<div style="text-align:center">
+<div style="text-align:center;">
+	</br>
 	<%= form_for(@search, url: { action: 'show' }) do |f| %>
-		<p>City Name:</p>
+		<h1 style="color:white;">Search Weather and Events In:</h1>
+		</br>
 		<p><%= f.text_field :city_name %></p>
-		<p><%= f.submit 'search' %></p>
+		</br>
+		<p><%= f.submit 'search', class: "btn btn-primary" %></p>
 	<% end %>
 </div>
