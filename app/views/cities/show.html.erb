@@ -17,6 +17,18 @@
 
 	</br><p>wind speed: <%= @weather['wind']['speed'] %></p>
 	</br><p>wind degrees: <%= @weather['wind']['deg'] %></p>
+
+
+  <% if current_user %>
+		</br>
+		<%= form_for(@fave_city, url: { action: 'save_city' }) do |f| %>
+			<%= f.hidden_field :fave_city, :value => @weather['name'] %>
+			</br>
+			<p><%= f.submit 'save city as favorite', class: "btn btn-primary" %></p>
+		<% end %>
+	<% end %>
+
+
 </div>
 
 

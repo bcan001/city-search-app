@@ -3,7 +3,7 @@
 	<%= form_for(@search, url: { action: 'show' }) do |f| %>
 		<h1 style="color:white;">Search Weather and Events In:</h1>
 		</br>
-		<p><%= f.text_field :city_name %></p>
+		<p><%= f.text_field :city_name, :size => 40 %></p>
 		</br>
 		<p><%= f.submit 'search', class: "btn btn-primary" %></p>
 	<% end %>

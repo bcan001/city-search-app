@@ -1,10 +1,34 @@
 Rails.application.routes.draw do
 
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
+  get 'home/show'
+
   root 'cities#search'
 
   get '/show', to: 'cities#show'
   post '/show', to: 'cities#show'
 
+
+  get '/about', to: 'cities#about', as: 'about'
+
+
+
+  # oauth facebook
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
+  resources :sessions, only: [:create, :destroy]
+  resource :home, only: [:show]
+
+  get '/profile', to: 'cities#profile', as: 'profile'
+
+
+  get '/save_city', to: 'cities#save_city'
+  post '/save_city', to: 'cities#save_city'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

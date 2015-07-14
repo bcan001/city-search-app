@@ -1,0 +1,10 @@
+<div style="color:white;text-align:center;">
+	<h1>My Profile</h1>
+
+	<p><%= current_user.name %></p>
+
+	<% @cities.each do |c| %>
+		<p><%= c.name %></p>
+	<% end %>
+
+</div>
