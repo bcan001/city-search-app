@@ -6,4 +6,12 @@ module CitiesHelper
 		result = JSON.parse(open(search_url).read)
 		return result
 	end
+
+	def get_events(city_name)
+		# city_name = city_name.split(" ")
+
+		search_url = "http://api.eventful.com/json/events/search?&app_key=CgWRhR5CVwSNfXVs&location=" + city_name + "&date=Today"
+		result = JSON.parse(open(search_url).read)
+		return result
+	end
 end
