@@ -48,17 +48,20 @@
 		</br>
 
 		</br>
-		<% @events['events']['event'].each do |e| %>
-			<h3><%= e['title'] %></h3>
+		<% if @events['events'] %>
 
-			<p><%= e['start_time'] %> to <%= e['stop_time'] %></p>
-		
-			<p><strong><%= e['venue_name'] %></strong></p>
-			<p><strong><%= e['venue_address'] %></strong></p>
-			<p><strong><%= e['city_name'] %>, <%= e['region_abbr'] %></strong></p>
+			<% @events['events']['event'].each do |e| %>
+				<h3><%= e['title'] %></h3>
 
-			<p><%= e['description'].html_safe %></p>
-			</br>
+				<p><%= e['start_time'] %> to <%= e['stop_time'] %></p>
+			
+				<p><strong><%= e['venue_name'] %></strong></p>
+				<p><strong><%= e['venue_address'] %></strong></p>
+				<p><strong><%= e['city_name'] %>, <%= e['region_abbr'] %></strong></p>
+
+				<p><%= e['description'].html_safe %></p>
+				</br>
+			<% end %>
 		<% end %>
 
 	</div>
