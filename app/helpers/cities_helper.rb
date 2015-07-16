@@ -10,7 +10,7 @@ module CitiesHelper
 	def get_events(city_name, search_text)
 		city_name.gsub!(' ','+')
 		search_text.gsub!(' ','+')
-		search_url = "http://api.eventful.com/json/events/search?&app_key=CgWRhR5CVwSNfXVs&location=" + city_name + "&date=Today&keywords=" + search_text
+		search_url = "http://api.eventful.com/json/events/search?&app_key=" + ENV["eventful_key"]+ "&location=" + city_name + "&date=Today&keywords=" + search_text
 		result = JSON.parse(open(search_url).read)
 		return result
 	end
