@@ -37,11 +37,11 @@
 	</div>
 
 	<div class='well text-left'> 
+		<h2 style="text-align:center;">Today's Events in <%= @weather['name'] %></h2>
+		</br>
+		</br>
 		<% if @events['events'] %>
 			<% @events['events']['event'].each do |e| %>
-				<h2 style="text-align:center;">Today's Events in <%= @weather['name'] %></h2>
-				</br>
-				</br>
 				<h3><%= e['title'] %></h3>
 				<p><%= e['start_time'] %> to <%= e['stop_time'] %></p>	
 				<p><strong><%= e['venue_name'] %></strong></p>
@@ -51,7 +51,7 @@
 				</br>
 			<% end %>
 		<% else %>
-			<h2>Sorry, could not find any events for that city! Please search again.</h2>
+			<h3>Sorry, could not find any events for that city! Please search again.</h3>
 		<% end %>
 	</div>
 </div>
